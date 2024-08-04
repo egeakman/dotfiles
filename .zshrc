@@ -169,6 +169,7 @@ alias explorer='nautilus'
 
 alias claer='clear'
 
+# https://snapcraft.io/install/thefuck/ubuntu#install
 eval "$(thefuck --alias)"
 
 eval "$(starship init zsh)"
