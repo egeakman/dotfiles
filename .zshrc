@@ -100,21 +100,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/egeakman/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/egeakman/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/egeakman/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/egeakman/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # ZOXIDE START
 _z_cd() {
     cd "$@" || return "$?"
@@ -162,9 +147,6 @@ _zoxide_hook() {
 chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
 # ZOXIDE END
 
-alias -g -- -h='-h 2>&1 | batcat --language=help --style=plain'
-alias -g -- --help='--help 2>&1 | batcat --language=help --style=plain'
-
 alias explorer='nautilus'
 
 alias claer='clear'
@@ -187,3 +169,13 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# venv activate alias
+activate() {
+  if [ -f .venv/bin/activate ]; then
+    source .venv/bin/activate
+  else
+    echo "No .venv found in current directory."
+  fi
+}
+# venv activate alias end
