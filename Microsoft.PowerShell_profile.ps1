@@ -6,4 +6,12 @@ Invoke-Expression (& {
     (zoxide init --hook $hook powershell) -join "`n"
 })
 
+function activate {
+    if (Test-Path ".venv\Scripts\Activate.ps1") {
+        . .venv\Scripts\Activate.ps1
+    } else {
+        Write-Host "No .venv found in current directory."
+    }
+}
+
 Import-Module PSReadLine
